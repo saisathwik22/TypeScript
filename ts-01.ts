@@ -1,65 +1,76 @@
-# TYPESCRIPT
-- Types supported here.
-#### Types in TS:(Primitive : can't be altered)
-- string | number | boolean | undefined | null | bigint | symbol
+// =======================
+// 📘 TypeScript Basics
+// =======================
 
-### Declaration of variable in TS:
-- Type Annotation
-  ```
-  <let/const/var> <variable_name> : type = <value>;
-  ex : let id : number = 5;
-  ```
-- Type Signature : TS can also automatically infer type just like JS
-  ```
-  <let/const/var> <variable_name> = <value>
-  ex : let id = 5;
-  ```
+// 🎯 Primitive Types
+let str: string = "hello";
+let num: number = 42;
+let isActive: boolean = true;
+let undef: undefined = undefined;
+let n: null = null;
+let big: bigint = 9007199254740991n;
+let sym: symbol = Symbol("id");
 
-### Difference between JavaScript and TypeScript ?
-- Javascript allows `Dynamic Typing` : Type of variable can be changed on the go.
-  ```
-  let id = 5; // auto infer that id is number
-  id = 10; // value changeable
-  id = "hello"; // type also can be changed on the go.
-  ```
-- Typescript : ` NO DYNAMIC TYPING !!!!`
-  ```
-  let id = 5; // auto infer that id is number
-  id = 10; // value can be changed on the go withing same type
-  id = "hello"; // error identified because type bool is not assignable to type string.
-  // cannot change the type on the go - NO DYNAMIC TYPING !!!
-  ```
-- can't assign/reassign type of variable once assigned/auto identified by TS
-- assigning using `:type` or not, TS will automatically understand the type of variable at 1st assingment and won't allow reassignment
+// =======================
+// 📝 Declaring Variables
+// =======================
 
-#### Can we place more than one types for a variable in TS ?
-- Yes, using Union of Types
+// 1. Type Annotation
+let id: number = 5;
+const username: string = "Alice";
+var loggedIn: boolean = false;
 
-### Union Of Types:
-- <let/var/const> <variable_name> : data_type1 | data_type2 = <value>;
+// 2. Type Inference
+let age = 25; // inferred as number
+let city = "Paris"; // inferred as string
+// age = "twenty five"; ❌ Error
 
-### For Arrays in TS ?
-- for conventional declaration of array in TS:
-  ```
-  let <variable_name> : type[] = [value1, value2, .....]
-  ```
-- In JS, arrays are Heterogenous, multiple types allowed in JS arrays
-  ```
-  arrayInJS = [1, 2, 3, "4", false, 4.532, "hellow", .....]
-  ```
-- In TS, use `any[]` in place of type[]
-  ```
-  let heteroArrayTS : any[] = [1, 2, false, "hello", null, ....]
-  ```
-- We can also use `any` for variable declaration to keep them heterogenous.
-  ```
-  let x : any = 10;
-  x = "100";
-  x = false;
-  ```
-#### Union of Types : Arrays
-- let <array_name> : (type1 | type2 | type3)[] = [val1, val2, ....]
-- let arr : (number | string | boolean)[] = [1, "100", false];
-#### Arrays in form of Typed Tuple
-- let array : [number, string, boolean] = [......]
-- instead of using (number | string | boolean)[] , use this [number, string, boolean]
+// =======================
+// 🔄 TS vs JS Typing
+// =======================
+
+// JavaScript (dynamic typing)
+let jsId = 5;
+jsId = 10;
+jsId = "hello"; // allowed in JS
+
+// TypeScript (no dynamic typing)
+let tsId = 5; 
+tsId = 10; 
+// tsId = "hello"; ❌ Error
+
+// =======================
+// ⚡ Union Types
+// =======================
+let value: string | number = 100;
+value = "one hundred"; // ✅
+value = 200; // ✅
+// value = true; ❌ Error
+
+// =======================
+// 📚 Arrays
+// =======================
+
+// 1. Typed Array
+let numbers: number[] = [1, 2, 3, 4];
+let strings: string[] = ["a", "b", "c"];
+
+// 2. Heterogeneous Array with 'any'
+let mixed: any[] = [1, "two", false, 4.5];
+
+// 3. Union Type Array
+let arr: (number | string | boolean)[] = [1, "100", false];
+
+// 4. Tuples (fixed length + types)
+let user: [number, string, boolean] = [1, "Alice", true];
+
+// =======================
+// 📦 'any' Type
+// =======================
+let x: any = 10;
+x = "hello"; // ✅
+x = false;   // ✅
+
+// =======================
+// ✅ End of File
+// =======================
